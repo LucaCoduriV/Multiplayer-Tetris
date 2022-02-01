@@ -1,3 +1,5 @@
+import Ticker from "./core/Ticker";
+
 const c = document.getElementById("canvas") as HTMLCanvasElement;
 const ctx = c.getContext("2d");
 
@@ -20,3 +22,9 @@ class App {
 
     update() {}
 }
+
+const ticker = new Ticker(2);
+ticker.subscribe(() => {
+    console.log("tick");
+});
+ticker.start();
