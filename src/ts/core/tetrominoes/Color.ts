@@ -7,6 +7,7 @@ export default class Color {
     static readonly CYAN: Color = new Color("#00FFFF");
     static readonly ORANGE: Color = new Color("#FF7F00");
     static readonly PINK: Color = new Color("#FF007F");
+    static readonly GREY: Color = new Color("#808080");
 
     color = "";
 

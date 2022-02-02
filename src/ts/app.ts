@@ -1,35 +1,32 @@
-import LShape from "./core/tetrominoes/LShape";
-import Ticker from "./core/Ticker";
-import ActionController from "./ActionController";
-import { Vector } from "vector2d";
+import PlayFieldUI from "./view/PlayFieldUI";
+import { UI_SCALE } from "./config";
 
-const c = document.getElementById("canvas") as HTMLCanvasElement;
-const ctx = c.getContext("2d");
+class Tetris {
+    ctx: CanvasRenderingContext2D;
+    boardUI: PlayFieldUI;
 
-var grd = ctx.createRadialGradient(75, 50, 5, 90, 60, 100);
-grd.addColorStop(0, "red");
-grd.addColorStop(1, "white");
-
-// Fill with gradient
-ctx.fillStyle = grd;
-ctx.fillRect(10, 10, 150, 80);
-
-class App {
     constructor() {
-        requestAnimationFrame(this.render);
+        const c = document.getElementById("canvas") as HTMLCanvasElement;
+        this.ctx = c.getContext("2d");
+        this.ctx.canvas.width = 900 * UI_SCALE;
+        this.ctx.canvas.height = 1050 * UI_SCALE;
+
+        this.boardUI = new PlayFieldUI(10, 20);
+        requestAnimationFrame(this.render.bind(this));
     }
 
     render(tFrame: number) {
-        requestAnimationFrame(this.render);
+        requestAnimationFrame(this.render.bind(this));
+        this.setBackgroundColor();
+        this.boardUI.render(this.ctx);
     }
 
     update() {}
+
+    private setBackgroundColor() {
+        this.ctx.fillStyle = "black";
+        this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+    }
 }
 
-const shape = new LShape(new Vector(0, 0));
-
-console.log(shape.blocks);
-shape.moveDown();
-console.log(shape.blocks);
-shape.moveUp();
-console.log(shape.blocks);
+new Tetris();
