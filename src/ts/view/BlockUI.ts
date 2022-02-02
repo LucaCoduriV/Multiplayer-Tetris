@@ -2,7 +2,7 @@ import { Vector } from "vector2d";
 import { UI_SCALE } from "../config";
 import Color from "../core/tetrominoes/Color";
 import PlayFieldUI from "../view/PlayFieldUI";
-import Renderer from "./Renderer";
+import Renderer from "./interfaces/Renderer";
 
 export default class BlockUI implements Renderer {
     static readonly BLOCK_WIDTH = 50 * UI_SCALE;
@@ -28,6 +28,9 @@ export default class BlockUI implements Renderer {
     }
 
     private positionOnBoard(): Vector {
-        return PlayFieldUI.positionOnBoard(this._position);
+        return new Vector(
+            this._position.x * BlockUI.BLOCK_WIDTH,
+            this._position.y * BlockUI.BLOCK_WIDTH
+        );
     }
 }

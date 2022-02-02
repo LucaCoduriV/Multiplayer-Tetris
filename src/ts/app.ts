@@ -1,37 +1,23 @@
-import PlayFieldUI from "./view/PlayFieldUI";
+import TetrisView from "./view/TetrisView";
 import GameController from "./GameController";
-import { UI_SCALE } from "./config";
 import Board from "./core/Board";
-import Controller from "./Controller";
+import IControllerView from "./view/interfaces/IControllerView";
 
 class Tetris {
-    ctx: CanvasRenderingContext2D;
-    playField: PlayFieldUI;
-    controller: Controller;
+    private _ctx: CanvasRenderingContext2D;
+    private _tetrisView: TetrisView;
+    private _controller: IControllerView;
 
     constructor() {
         const c = document.getElementById("canvas") as HTMLCanvasElement;
-        this.ctx = c.getContext("2d");
-        this.ctx.canvas.width = 900 * UI_SCALE;
-        this.ctx.canvas.height = 1050 * UI_SCALE;
-
-        this.controller = new GameController(new Board(10, 20, 1));
-        this.playField = new PlayFieldUI(10, 20, this.controller);
-        requestAnimationFrame(this.render.bind(this));
+        this._ctx = c.getContext("2d");
+        this._controller = new GameController(new Board(10, 20, 1));
+        this._tetrisView = new TetrisView(this._controller, this._ctx);
     }
 
-    render(tFrame: number) {
-        requestAnimationFrame(this.render.bind(this));
-        this.setBackgroundColor();
-        this.playField.render(this.ctx);
-    }
-
-    update() {}
-
-    private setBackgroundColor() {
-        this.ctx.fillStyle = "black";
-        this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+    init() {
+        this._controller.start();
     }
 }
 
-new Tetris();
+new Tetris().init();
