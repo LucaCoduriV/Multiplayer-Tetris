@@ -1,5 +1,7 @@
+import LShape from "./core/tetrominoes/LShape";
 import Ticker from "./core/Ticker";
 import ActionController from "./ActionController";
+import { Vector } from "vector2d";
 
 const c = document.getElementById("canvas") as HTMLCanvasElement;
 const ctx = c.getContext("2d");
@@ -24,4 +26,10 @@ class App {
     update() {}
 }
 
-const action = new ActionController();
+const shape = new LShape(new Vector(0, 0));
+
+console.log(shape.blocks);
+shape.moveDown();
+console.log(shape.blocks);
+shape.moveUp();
+console.log(shape.blocks);
