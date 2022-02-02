@@ -16,6 +16,7 @@ export default class BlockUI implements Renderer {
     }
 
     render(ctx: CanvasRenderingContext2D) {
+        ctx.beginPath();
         ctx.fillStyle = this._color.toString();
         ctx.strokeStyle = "red";
         ctx.lineWidth = 1;
@@ -23,6 +24,7 @@ export default class BlockUI implements Renderer {
         ctx.rect(position.x, position.y, BlockUI.BLOCK_WIDTH, BlockUI.BLOCK_WIDTH);
         ctx.fill();
         ctx.stroke();
+        ctx.closePath();
     }
 
     private positionOnBoard(): Vector {

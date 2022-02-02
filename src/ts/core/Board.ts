@@ -25,6 +25,10 @@ export default class Board {
         return this._activeShape;
     }
 
+    get inactiveBlocks(): Block[] {
+        return this._inactiveBlocks;
+    }
+
     addShape(shape: Shape): void {
         this._activeShape = shape;
     }
