@@ -4,7 +4,7 @@ import Color from "./Color";
 import Shape from "./Shape";
 
 export default class LShape extends Shape {
-    constructor(position: Vector) {
+    constructor(position: Vector, rotation: number) {
         const COLOR = Color.GREEN;
         const pos1 = [
             [0, 0, 1],
@@ -34,6 +34,6 @@ export default class LShape extends Shape {
             Block.blockFromArray(pos4, COLOR),
         ];
 
-        super(position, new Vector(1, 1), BLOCKS);
+        super(position, rotation, new Vector(1, 1), BLOCKS);
     }
 }

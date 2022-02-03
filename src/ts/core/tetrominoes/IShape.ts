@@ -4,7 +4,7 @@ import Color from "./Color";
 import Shape from "./Shape";
 
 export default class IShape extends Shape {
-    constructor(position: Vector) {
+    constructor(position: Vector, rotation: number) {
         const COLOR = Color.PURPLE;
         const pos1 = [
             [0, 0, 0, 0],
@@ -38,6 +38,6 @@ export default class IShape extends Shape {
             Block.blockFromArray(pos4, COLOR),
         ];
 
-        super(position, new Vector(1, 1), BLOCKS);
+        super(position, rotation, new Vector(1, 1), BLOCKS);
     }
 }

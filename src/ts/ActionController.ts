@@ -8,11 +8,22 @@ export default class ActionController {
     onRotateLeft = new EventEmitter<() => void>();
     onRotateRight = new EventEmitter<() => void>();
 
+    private isDisabled = false;
+
     constructor() {
         document.addEventListener("keydown", this.handleKeyDown.bind(this));
     }
 
+    disable(): void {
+        this.isDisabled = true;
+    }
+
+    enable(): void {
+        this.isDisabled = false;
+    }
+
     private handleKeyDown(event: KeyboardEvent): void {
+        if (this.isDisabled) return;
         switch (event.key) {
             case "ArrowLeft":
                 this.onLeft.fire();

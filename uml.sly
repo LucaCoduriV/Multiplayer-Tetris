@@ -280,6 +280,7 @@
       </method>
       <method isAbstract="false" isStatic="false" name="checkCollision" returnType="bool" view="DEFAULT" visibility="PUBLIC"/>
       <method isAbstract="false" isStatic="false" name="checkOutOfBounds" returnType="bool" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="disableActiveShape" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
     </entity>
     <entity entityType="CLASS" id="57329" isAbstract="false" name="Block" visibility="PUBLIC">
       <attribute const="false" defaultValue="" isStatic="false" name="positon" type="Vector2d" visibility="PRIVATE"/>
@@ -339,7 +340,11 @@
         <variable const="false" name="p" type="Vector"/>
       </method>
     </entity>
-    <entity entityType="CLASS" id="57716" isAbstract="false" name="ActionController" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="57716" isAbstract="false" name="ActionController" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="false" name="isDisabled" type="bool" visibility="PRIVATE"/>
+      <method isAbstract="false" isStatic="false" name="disable" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="enable" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
+    </entity>
     <entity entityType="CLASS" id="57746" isAbstract="false" name="EventEmitter&lt;T&gt;" visibility="PUBLIC">
       <method isAbstract="false" isStatic="false" name="subscribe" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
       <method isAbstract="false" isStatic="false" name="fire" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
@@ -540,7 +545,7 @@
       <line>
         <point>
           <x>81</x>
-          <y>196</y>
+          <y>241</y>
         </point>
         <point>
           <x>81</x>
@@ -549,13 +554,13 @@
       </line>
       <labelAssociation>
         <x>85</x>
-        <y>292</y>
+        <y>315</y>
         <w>0</w>
         <h>17</h>
       </labelAssociation>
       <roleAssociation>
         <x>85</x>
-        <y>200</y>
+        <y>245</y>
         <w>0</w>
         <h>17</h>
       </roleAssociation>
@@ -567,7 +572,7 @@
       </roleAssociation>
       <multipliciteAssociation>
         <x>67</x>
-        <y>200</y>
+        <y>245</y>
         <w>8</w>
         <h>17</h>
       </multipliciteAssociation>
@@ -582,7 +587,7 @@
       <line>
         <point>
           <x>61</x>
-          <y>196</y>
+          <y>241</y>
         </point>
         <point>
           <x>61</x>
@@ -591,13 +596,13 @@
       </line>
       <labelAssociation>
         <x>65</x>
-        <y>292</y>
+        <y>315</y>
         <w>0</w>
         <h>17</h>
       </labelAssociation>
       <roleAssociation>
         <x>65</x>
-        <y>200</y>
+        <y>245</y>
         <w>0</w>
         <h>17</h>
       </roleAssociation>
@@ -609,7 +614,7 @@
       </roleAssociation>
       <multipliciteAssociation>
         <x>47</x>
-        <y>200</y>
+        <y>245</y>
         <w>8</w>
         <h>17</h>
       </multipliciteAssociation>
@@ -624,7 +629,7 @@
       <line>
         <point>
           <x>41</x>
-          <y>196</y>
+          <y>241</y>
         </point>
         <point>
           <x>41</x>
@@ -633,13 +638,13 @@
       </line>
       <labelAssociation>
         <x>45</x>
-        <y>292</y>
+        <y>315</y>
         <w>0</w>
         <h>17</h>
       </labelAssociation>
       <roleAssociation>
         <x>5</x>
-        <y>200</y>
+        <y>245</y>
         <w>0</w>
         <h>17</h>
       </roleAssociation>
@@ -651,7 +656,7 @@
       </roleAssociation>
       <multipliciteAssociation>
         <x>26</x>
-        <y>197</y>
+        <y>242</y>
         <w>8</w>
         <h>17</h>
       </multipliciteAssociation>
@@ -828,7 +833,7 @@
       <line>
         <point>
           <x>171</x>
-          <y>196</y>
+          <y>241</y>
         </point>
         <point>
           <x>171</x>
@@ -837,13 +842,13 @@
       </line>
       <labelAssociation>
         <x>175</x>
-        <y>292</y>
+        <y>315</y>
         <w>0</w>
         <h>17</h>
       </labelAssociation>
       <roleAssociation>
         <x>175</x>
-        <y>200</y>
+        <y>245</y>
         <w>0</w>
         <h>17</h>
       </roleAssociation>
@@ -855,7 +860,7 @@
       </roleAssociation>
       <multipliciteAssociation>
         <x>157</x>
-        <y>200</y>
+        <y>245</y>
         <w>8</w>
         <h>17</h>
       </multipliciteAssociation>
@@ -870,7 +875,7 @@
       <line>
         <point>
           <x>111</x>
-          <y>196</y>
+          <y>241</y>
         </point>
         <point>
           <x>111</x>
@@ -879,13 +884,13 @@
       </line>
       <labelAssociation>
         <x>115</x>
-        <y>292</y>
+        <y>315</y>
         <w>0</w>
         <h>17</h>
       </labelAssociation>
       <roleAssociation>
         <x>115</x>
-        <y>200</y>
+        <y>245</y>
         <w>0</w>
         <h>17</h>
       </roleAssociation>
@@ -897,7 +902,7 @@
       </roleAssociation>
       <multipliciteAssociation>
         <x>97</x>
-        <y>200</y>
+        <y>245</y>
         <w>8</w>
         <h>17</h>
       </multipliciteAssociation>
@@ -965,7 +970,7 @@
         <x>40</x>
         <y>140</y>
         <w>150</w>
-        <h>55</h>
+        <h>100</h>
       </geometry>
     </componentView>
     <componentView color="-2079" componentID="57656" displayAttributes="true" displayDefault="true" displayMethods="true">
@@ -1037,7 +1042,7 @@
         <x>400</x>
         <y>10</y>
         <w>150</w>
-        <h>205</h>
+        <h>220</h>
       </geometry>
     </componentView>
     <componentView color="-2079" componentID="60361" displayAttributes="true" displayDefault="true" displayMethods="true">

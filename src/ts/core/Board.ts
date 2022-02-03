@@ -60,14 +60,13 @@ export default class Board {
      * @returns vrai si des blocs se trouvent tout en haut.
      */
     isOverflowing(): boolean {
-        if (!this._activeShape) return false;
         const blocks = this._inactiveBlocks;
 
-        blocks.forEach((block) => {
-            if (block.position.y == 0) {
+        for (let i = 0; i < blocks.length; i++) {
+            if (blocks[i].position.y == 0) {
                 return true;
             }
-        });
+        }
 
         return false;
     }
@@ -95,27 +94,30 @@ export default class Board {
 
     addRandomShape(): Shape {
         const shapes = ["L", "Z", "T", "S", "J", "I", "O"];
+        const rotation = Math.floor(Math.random() * 4);
+        // TODO prendre en compte la taille de la pièce pour pas que ça puisse spawn en dehors de la grille.
+        const xPos = Math.floor(Math.random() * 7);
         switch (shapes[Math.floor(Math.random() * shapes.length)]) {
             case "L":
-                this._activeShape = new LShape(new Vector(0, 0));
+                this._activeShape = new LShape(new Vector(xPos, -2), rotation);
                 break;
             case "Z":
-                this._activeShape = new ZShape(new Vector(0, 0));
+                this._activeShape = new ZShape(new Vector(xPos, -2), rotation);
                 break;
             case "T":
-                this._activeShape = new TShape(new Vector(0, 0));
+                this._activeShape = new TShape(new Vector(xPos, -2), rotation);
                 break;
             case "S":
-                this._activeShape = new SShape(new Vector(0, 0));
+                this._activeShape = new SShape(new Vector(xPos, -2), rotation);
                 break;
             case "J":
-                this._activeShape = new JShape(new Vector(0, 0));
+                this._activeShape = new JShape(new Vector(xPos, -2), rotation);
                 break;
             case "I":
-                this._activeShape = new IShape(new Vector(0, 0));
+                this._activeShape = new IShape(new Vector(xPos, -2), rotation);
                 break;
             case "O":
-                this._activeShape = new OShape(new Vector(0, 0));
+                this._activeShape = new OShape(new Vector(xPos, -2));
                 break;
             default:
                 throw new Error("Invalid shape");

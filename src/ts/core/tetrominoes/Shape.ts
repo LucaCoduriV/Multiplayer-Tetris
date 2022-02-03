@@ -9,9 +9,9 @@ export default abstract class Shape {
     protected _blocks: Block[][];
     protected _board: Board;
 
-    constructor(position: Vector, rotationCenter: Vector, blocks: Block[][]) {
+    constructor(position: Vector, rotation: number, rotationCenter: Vector, blocks: Block[][]) {
         this._blocks = blocks;
-        this._rotation = 0; // nombre entre 0 et 3
+        this._rotation = rotation; // nombre entre 0 et 3
         this._position = position;
         this._rotationCenter = rotationCenter;
     }

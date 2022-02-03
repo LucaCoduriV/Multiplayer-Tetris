@@ -14,7 +14,15 @@ export default class GameController implements IControllerView {
         this._board = board;
         this._actionController = new ActionController();
         this._ticker = new Ticker(2);
-        this._ticker.subscribe(this.moveDown.bind(this));
+
+        this._ticker.subscribe(() => {
+            this.moveDown();
+            if (this._board.isOverflowing()) {
+                console.log("Game Over");
+                this._ticker.stop();
+                this._actionController.disable();
+            }
+        });
     }
 
     private asignActions() {

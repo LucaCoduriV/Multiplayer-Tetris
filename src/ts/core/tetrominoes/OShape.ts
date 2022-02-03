@@ -34,6 +34,6 @@ export default class OShape extends Shape {
             Block.blockFromArray(pos4, COLOR),
         ];
 
-        super(position, new Vector(1, 1), BLOCKS);
+        super(position, 0, new Vector(1, 1), BLOCKS);
     }
 }
