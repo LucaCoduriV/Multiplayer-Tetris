@@ -31,6 +31,44 @@ export default class Board {
     }
 
     /**
+     * Permet de trouver les lignes complètes.
+     * @returns un tableau contenant les numéros de lignes complètes.
+     */
+    checkLineCompletion(): number[] {
+        const blocks = this._inactiveBlocks;
+        let lines = Array.from({ length: this._height }, (v, i) => 0);
+
+        for (let i = 0; i < blocks.length; i++) {
+            lines[blocks[i].position.y]++;
+        }
+        return lines.map((line, index) => (line > 10 ? index : -1)).filter((line) => line != -1);
+    }
+
+    /**
+     * Permet de supprimer une ligne du jeu.
+     * @param line le numéro de la ligne à supprimer.
+     */
+    removeLine(line: number) {
+        const blocks = this._inactiveBlocks;
+        const newArray: Block[] = [];
+        for (let i = 0; i < blocks.length; i++) {
+            if (blocks[i].position.y != line) {
+                newArray.push(blocks[i]);
+            }
+        }
+        this._inactiveBlocks = newArray;
+    }
+
+    pullBlocksDown(higherThan: number): void {
+        const blocks = this._inactiveBlocks;
+        for (let i = 0; i < blocks.length; i++) {
+            if (blocks[i].position.y < higherThan) {
+                blocks[i].position.y++;
+            }
+        }
+    }
+
+    /**
      * Permet de désactiver la forme active.
      */
     disableActiveShape(): void {

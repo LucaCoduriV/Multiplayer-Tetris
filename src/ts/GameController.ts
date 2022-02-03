@@ -17,8 +17,16 @@ export default class GameController implements IControllerView {
 
         this._ticker.subscribe(() => {
             this.moveDown();
+            const completedLines = this._board.checkLineCompletion();
+
+            if (completedLines.length > 0) {
+                completedLines.forEach((line) => {
+                    this._board.removeLine(line);
+                    this._board.pullBlocksDown(line);
+                });
+            }
             if (this._board.isOverflowing()) {
-                console.log("Game Over");
+                alert("Game Over");
                 this._ticker.stop();
                 this._actionController.disable();
             }
