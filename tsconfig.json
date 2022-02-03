@@ -4,7 +4,7 @@
         "sourceMap": true,
         "noImplicitAny": true,
         "module": "commonjs",
-        "target": "esnext",
+        "target": "es2021",
         "allowJs": true
     },
     "exclude": ["node_modules"],

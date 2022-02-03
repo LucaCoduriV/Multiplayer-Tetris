@@ -14,7 +14,7 @@ export default class Board {
     private _width: number;
     private _height: number;
     private _speed: number;
-    private _activeShape: Shape;
+    private _activeShape: Shape | null;
 
     constructor(width: number, height: number, speed: number) {
         this._width = width;
@@ -30,10 +30,70 @@ export default class Board {
         return this._inactiveBlocks;
     }
 
+    /**
+     * Permet de désactiver la forme active.
+     */
+    disableActiveShape(): void {
+        this._inactiveBlocks.push(...this._activeShape.blocks);
+        this._activeShape = null;
+    }
+
+    checkCollision(): boolean {
+        if (!this._activeShape) return false;
+
+        const inactiveBlocks = this._inactiveBlocks;
+        const activeBlocks = this._activeShape.blocks;
+
+        for (let i = 0; i < inactiveBlocks.length; i++) {
+            for (let j = 0; j < activeBlocks.length; j++) {
+                if (inactiveBlocks[i].position.equals(activeBlocks[j].position)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Permet de savoir si les blocs se trouvent tout en haut.
+     * @returns vrai si des blocs se trouvent tout en haut.
+     */
+    isOverflowing(): boolean {
+        if (!this._activeShape) return false;
+        const blocks = this._inactiveBlocks;
+
+        blocks.forEach((block) => {
+            if (block.position.y == 0) {
+                return true;
+            }
+        });
+
+        return false;
+    }
+
+    /**
+     * Permet de savoir si la forme active est en dehors de la grille.
+     * @returns vrai si la forme se trouve en dehors de la grille.
+     */
+    checkOutOfBounds(): boolean {
+        if (!this._activeShape) return false;
+        const blocks = this._activeShape.blocks;
+        for (let i = 0; i < blocks.length; i++) {
+            if (blocks[i].position.x < 0 || blocks[i].position.x > this._width) {
+                return true;
+            }
+            if (blocks[i].position.y >= this._height) {
+                return true;
+            }
+        }
+    }
+
     addShape(shape: Shape): void {
         this._activeShape = shape;
     }
-    addRandomShape(): void {
+
+    addRandomShape(): Shape {
         const shapes = ["L", "Z", "T", "S", "J", "I", "O"];
         switch (shapes[Math.floor(Math.random() * shapes.length)]) {
             case "L":
@@ -62,5 +122,6 @@ export default class Board {
         }
 
         this._activeShape = this._activeShape;
+        return this._activeShape;
     }
 }

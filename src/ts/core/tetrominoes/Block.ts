@@ -1,4 +1,4 @@
-import { Vector } from "Vector2d";
+import { Vector } from "vector2d";
 import Color from "./Color";
 
 export default class Block {
@@ -22,7 +22,6 @@ export default class Block {
     }
 
     static blockFromArray(array: number[][], color: Color): Block[] {
-        console.log(array);
         let result = [];
         for (let y = 0; y < array.length; y++) {
             for (let x = 0; x < array[0].length; x++) {

@@ -3,59 +3,85 @@ import ActionController from "./ActionController";
 import IControllerView from "./view/interfaces/IControllerView";
 import IBlock from "./view/interfaces/IBlock";
 import Shape from "./core/tetrominoes/Shape";
+import Ticker from "./core/Ticker";
 
 export default class GameController implements IControllerView {
     private _board: Board;
     private _actionController: ActionController;
-    private _currentShape: Shape;
+    private _ticker: Ticker;
 
     constructor(board: Board) {
         this._board = board;
         this._actionController = new ActionController();
+        this._ticker = new Ticker(2);
+        this._ticker.subscribe(this.moveDown.bind(this));
     }
 
     private asignActions() {
-        this._actionController.onRight.subscribe(this.moveRight);
+        this._actionController.onRight.subscribe(this.moveRight.bind(this));
 
-        this._actionController.onLeft.subscribe(this.moveLeft);
+        this._actionController.onLeft.subscribe(this.moveLeft.bind(this));
 
-        this._actionController.onUp.subscribe(this.moveUp);
+        this._actionController.onUp.subscribe(this.moveUp.bind(this));
 
-        this._actionController.onDown.subscribe(this.moveDown);
+        this._actionController.onDown.subscribe(this.moveDown.bind(this));
 
-        this._actionController.onRotateLeft.subscribe(this.rotateLeft);
+        this._actionController.onRotateLeft.subscribe(this.rotateLeft.bind(this));
 
-        this._actionController.onRotateRight.subscribe(this.rotateRight);
+        this._actionController.onRotateRight.subscribe(this.rotateRight.bind(this));
     }
 
     private moveUp() {
-        this._currentShape?.moveUp();
+        this._board.activeShape?.moveUp();
+        if (this._board.checkCollision() || this._board.checkOutOfBounds()) {
+            this._board.activeShape?.moveDown();
+        }
     }
 
     private moveLeft() {
-        this._currentShape?.moveLeft();
+        this._board.activeShape?.moveLeft();
+        if (this._board.checkCollision() || this._board.checkOutOfBounds()) {
+            this._board.activeShape?.moveRight();
+        }
     }
 
     private moveRight() {
-        this._currentShape?.moveRight();
+        this._board.activeShape?.moveRight();
+        if (this._board.checkCollision() || this._board.checkOutOfBounds()) {
+            this._board.activeShape?.moveLeft();
+        }
     }
 
     private moveDown() {
-        this._currentShape?.moveDown();
+        this._board.activeShape?.moveDown();
+        if (this._board.checkCollision() || this._board.checkOutOfBounds()) {
+            this._board.activeShape?.moveUp();
+            this._board.disableActiveShape();
+            this._board.addRandomShape();
+        }
     }
 
     private rotateLeft() {
-        this._currentShape?.rotateLeft();
+        this._board.activeShape?.rotateLeft();
+        if (this._board.checkCollision() || this._board.checkOutOfBounds()) {
+            this._board.activeShape?.rotateRight();
+            this._board.disableActiveShape();
+            this._board.addRandomShape();
+        }
     }
 
     private rotateRight() {
-        this._currentShape?.rotateRight();
+        this._board.activeShape?.rotateRight();
+        if (this._board.checkCollision() || this._board.checkOutOfBounds()) {
+            this._board.activeShape?.rotateLeft();
+        }
     }
 
     /**
      * Permet de démarrer le jeu.
      */
     start(): void {
+        this._ticker.start();
         this._board.addRandomShape();
         this.asignActions();
 

@@ -1,35 +1,35 @@
 {
-  "name": "repeat-after-me",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "dev": "webpack -w"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/HarveyD/repeat-after-me.git"
-  },
-  "author": "Harvey",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/HarveyD/repeat-after-me/issues"
-  },
-  "homepage": "https://github.com/HarveyD/repeat-after-me#readme",
-  "devDependencies": {
-    "css-loader": "^0.28.11",
-    "file-loader": "^1.1.11",
-    "html-webpack-plugin": "^3.1.0",
-    "path": "^0.12.7",
-    "style-loader": "^0.20.3",
-    "ts-loader": "^4.1.0",
-    "typescript": "^2.8.1",
-    "webpack": "^4.4.1",
-    "webpack-cli": "^3.3.11"
-  },
-  "dependencies": {
-    "vector2d": "^3.0.0"
-  }
+    "name": "repeat-after-me",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "webpack",
+        "dev": "webpack -w"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/HarveyD/repeat-after-me.git"
+    },
+    "author": "Harvey",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/HarveyD/repeat-after-me/issues"
+    },
+    "homepage": "https://github.com/HarveyD/repeat-after-me#readme",
+    "devDependencies": {
+        "css-loader": "^0.28.11",
+        "file-loader": "^1.1.11",
+        "html-webpack-plugin": "^5.5.0",
+        "path": "^0.12.7",
+        "style-loader": "^0.20.3",
+        "ts-loader": "^9.2.6",
+        "typescript": "^4.5.5",
+        "webpack": "^5.68.0",
+        "webpack-cli": "^4.9.2"
+    },
+    "dependencies": {
+        "vector2d": "^3.0.0"
+    }
 }

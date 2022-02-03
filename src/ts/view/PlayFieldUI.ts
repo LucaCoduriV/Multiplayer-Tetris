@@ -30,9 +30,9 @@ export default class PlayFieldUI implements Renderer {
     private drawPlayField(ctx: CanvasRenderingContext2D): void {
         for (let i = 0; i < this._height; i++) {
             new BlockUI(new Vector(0, i), Color.GREY).render(ctx);
-            new BlockUI(new Vector(this._width, i), Color.GREY).render(ctx);
+            new BlockUI(new Vector(this._width + 2, i), Color.GREY).render(ctx);
         }
-        for (let i = 0; i < this._width + 1; i++) {
+        for (let i = 0; i < this._width + 3; i++) {
             new BlockUI(new Vector(i, this._height), Color.GREY).render(ctx);
         }
     }

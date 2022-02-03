@@ -18,7 +18,7 @@ export default class BlockUI implements Renderer {
     render(ctx: CanvasRenderingContext2D) {
         ctx.beginPath();
         ctx.fillStyle = this._color.toString();
-        ctx.strokeStyle = "red";
+        ctx.strokeStyle = "white";
         ctx.lineWidth = 1;
         const position = this.positionOnBoard();
         ctx.rect(position.x, position.y, BlockUI.BLOCK_WIDTH, BlockUI.BLOCK_WIDTH);
