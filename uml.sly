@@ -281,6 +281,13 @@
       <method isAbstract="false" isStatic="false" name="checkCollision" returnType="bool" view="DEFAULT" visibility="PUBLIC"/>
       <method isAbstract="false" isStatic="false" name="checkOutOfBounds" returnType="bool" view="DEFAULT" visibility="PUBLIC"/>
       <method isAbstract="false" isStatic="false" name="disableActiveShape" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="pullBlocksDown" returnType="void" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="l" type="number"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="removeLine" returnType="void" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="l" type="number"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="checkLineCompletion" returnType="number[]" view="DEFAULT" visibility="PUBLIC"/>
     </entity>
     <entity entityType="CLASS" id="57329" isAbstract="false" name="Block" visibility="PUBLIC">
       <attribute const="false" defaultValue="" isStatic="false" name="positon" type="Vector2d" visibility="PRIVATE"/>
@@ -377,7 +384,7 @@
       <line>
         <point>
           <x>551</x>
-          <y>31</y>
+          <y>21</y>
         </point>
         <point>
           <x>1021</x>
@@ -386,13 +393,13 @@
       </line>
       <labelAssociation>
         <x>790</x>
-        <y>85</y>
+        <y>80</y>
         <w>0</w>
         <h>17</h>
       </labelAssociation>
       <roleAssociation>
         <x>555</x>
-        <y>35</y>
+        <y>25</y>
         <w>0</w>
         <h>17</h>
       </roleAssociation>
@@ -404,7 +411,7 @@
       </roleAssociation>
       <multipliciteAssociation>
         <x>555</x>
-        <y>8</y>
+        <y>-2</y>
         <w>8</w>
         <h>17</h>
       </multipliciteAssociation>
@@ -423,12 +430,12 @@
         </point>
         <point>
           <x>401</x>
-          <y>31</y>
+          <y>21</y>
         </point>
       </line>
       <labelAssociation>
         <x>365</x>
-        <y>35</y>
+        <y>30</y>
         <w>0</w>
         <h>17</h>
       </labelAssociation>
@@ -440,7 +447,7 @@
       </roleAssociation>
       <roleAssociation>
         <x>365</x>
-        <y>35</y>
+        <y>25</y>
         <w>42</w>
         <h>17</h>
       </roleAssociation>
@@ -452,7 +459,7 @@
       </multipliciteAssociation>
       <multipliciteAssociation>
         <x>387</x>
-        <y>8</y>
+        <y>-2</y>
         <w>8</w>
         <h>17</h>
       </multipliciteAssociation>
@@ -464,13 +471,13 @@
           <y>126</y>
         </point>
         <point>
-          <x>361</x>
-          <y>241</y>
+          <x>281</x>
+          <y>201</y>
         </point>
       </line>
       <labelAssociation>
-        <x>330</x>
-        <y>187</y>
+        <x>290</x>
+        <y>167</y>
         <w>0</w>
         <h>17</h>
       </labelAssociation>
@@ -481,8 +488,8 @@
         <h>17</h>
       </roleAssociation>
       <roleAssociation>
-        <x>365</x>
-        <y>218</y>
+        <x>285</x>
+        <y>178</y>
         <w>40</w>
         <h>17</h>
       </roleAssociation>
@@ -493,8 +500,8 @@
         <h>17</h>
       </multipliciteAssociation>
       <multipliciteAssociation>
-        <x>347</x>
-        <y>218</y>
+        <x>267</x>
+        <y>178</y>
         <w>8</w>
         <h>17</h>
       </multipliciteAssociation>
@@ -671,7 +678,7 @@
       <line>
         <point>
           <x>551</x>
-          <y>61</y>
+          <y>51</y>
         </point>
         <point>
           <x>681</x>
@@ -680,13 +687,13 @@
       </line>
       <labelAssociation>
         <x>620</x>
-        <y>110</y>
+        <y>105</y>
         <w>0</w>
         <h>17</h>
       </labelAssociation>
       <roleAssociation>
         <x>555</x>
-        <y>65</y>
+        <y>55</y>
         <w>0</w>
         <h>17</h>
       </roleAssociation>
@@ -698,7 +705,7 @@
       </roleAssociation>
       <multipliciteAssociation>
         <x>555</x>
-        <y>38</y>
+        <y>28</y>
         <w>8</w>
         <h>17</h>
       </multipliciteAssociation>
@@ -935,8 +942,8 @@
     </relationView>
     <componentView color="-2079" componentID="58404" displayAttributes="true" displayDefault="true" displayMethods="true">
       <geometry>
-        <x>320</x>
-        <y>240</y>
+        <x>240</x>
+        <y>200</y>
         <w>150</w>
         <h>115</h>
       </geometry>
@@ -1040,9 +1047,9 @@
     <componentView color="-2079" componentID="57328" displayAttributes="true" displayDefault="true" displayMethods="true">
       <geometry>
         <x>400</x>
-        <y>10</y>
+        <y>0</y>
         <w>150</w>
-        <h>220</h>
+        <h>265</h>
       </geometry>
     </componentView>
     <componentView color="-2079" componentID="60361" displayAttributes="true" displayDefault="true" displayMethods="true">

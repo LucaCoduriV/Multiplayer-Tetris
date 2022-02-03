@@ -26,9 +26,11 @@ export default class GameController implements IControllerView {
                 });
             }
             if (this._board.isOverflowing()) {
-                alert("Game Over");
-                this._ticker.stop();
+                this.stop();
                 this._actionController.disable();
+                alert("Game Over");
+                this.reset();
+                this.start();
             }
         });
     }
@@ -100,24 +102,18 @@ export default class GameController implements IControllerView {
         this._ticker.start();
         this._board.addRandomShape();
         this.asignActions();
-
-        // setInterval(() => {
-        //     if (this._board.activeShape) {
-        //         this._board.activeShape.moveDown();
-        //     }
-        // }, 500);
     }
     /**
      * permet de stopper le jeu.
      */
     stop(): void {
-        throw new Error("Method not implemented.");
+        this._ticker.stop();
     }
     /**
      * Permet de reset le jeu.
      */
     reset(): void {
-        throw new Error("Method not implemented.");
+        this._board.clear();
     }
 
     /**

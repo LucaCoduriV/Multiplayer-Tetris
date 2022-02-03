@@ -30,6 +30,11 @@ export default class Board {
         return this._inactiveBlocks;
     }
 
+    clear(): void {
+        this._inactiveBlocks = [];
+        this._activeShape = null;
+    }
+
     /**
      * Permet de trouver les lignes complètes.
      * @returns un tableau contenant les numéros de lignes complètes.
