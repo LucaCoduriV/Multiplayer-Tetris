@@ -6,6 +6,7 @@ import SShape from "./tetrominoes/SShape";
 import TShape from "./tetrominoes/TShape";
 import ZShape from "./tetrominoes/ZShape";
 import IShape from "./tetrominoes/IShape";
+import OShape from "./tetrominoes/OShape";
 import Block from "./tetrominoes/Block";
 
 export default class Board {
@@ -33,7 +34,7 @@ export default class Board {
         this._activeShape = shape;
     }
     addRandomShape(): void {
-        const shapes = ["L", "Z", "T", "S", "J", "I"];
+        const shapes = ["L", "Z", "T", "S", "J", "I", "O"];
         switch (shapes[Math.floor(Math.random() * shapes.length)]) {
             case "L":
                 this._activeShape = new LShape(new Vector(0, 0));
@@ -52,6 +53,9 @@ export default class Board {
                 break;
             case "I":
                 this._activeShape = new IShape(new Vector(0, 0));
+                break;
+            case "O":
+                this._activeShape = new OShape(new Vector(0, 0));
                 break;
             default:
                 throw new Error("Invalid shape");

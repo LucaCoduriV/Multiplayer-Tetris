@@ -3,28 +3,28 @@ import Block from "./Block";
 import Color from "./Color";
 import Shape from "./Shape";
 
-export default class LShape extends Shape {
+export default class OShape extends Shape {
     constructor(position: Vector) {
-        const COLOR = Color.RED;
+        const COLOR = Color.ORANGE;
         const pos1 = [
-            [1, 1, 0],
-            [0, 1, 1],
-            [0, 0, 0],
+            [0, 1, 1, 0],
+            [0, 1, 1, 0],
+            [0, 0, 0, 0],
         ];
         const pos2 = [
-            [0, 0, 1],
-            [0, 1, 1],
-            [0, 1, 0],
+            [0, 1, 1, 0],
+            [0, 1, 1, 0],
+            [0, 0, 0, 0],
         ];
         const pos3 = [
-            [0, 0, 0],
-            [1, 1, 0],
-            [0, 1, 1],
+            [0, 1, 1, 0],
+            [0, 1, 1, 0],
+            [0, 0, 0, 0],
         ];
         const pos4 = [
-            [0, 1, 0],
-            [1, 1, 0],
-            [1, 0, 0],
+            [0, 1, 1, 0],
+            [0, 1, 1, 0],
+            [0, 0, 0, 0],
         ];
 
         const BLOCKS = [

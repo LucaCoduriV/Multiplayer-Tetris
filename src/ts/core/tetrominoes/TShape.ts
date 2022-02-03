@@ -6,13 +6,34 @@ import Shape from "./Shape";
 export default class TShape extends Shape {
     constructor(position: Vector) {
         const COLOR = Color.ORANGE;
-        const BLOCKS: Block[] = [
-            new Block(new Vector(0, 0), COLOR),
-            new Block(new Vector(1, 0), COLOR),
-            new Block(new Vector(2, 0), COLOR),
-            new Block(new Vector(1, 1), COLOR),
+        const pos1 = [
+            [0, 1, 0],
+            [1, 1, 1],
+            [0, 0, 0],
+        ];
+        const pos2 = [
+            [0, 1, 0],
+            [0, 1, 1],
+            [0, 1, 0],
+        ];
+        const pos3 = [
+            [0, 0, 0],
+            [1, 1, 1],
+            [0, 1, 0],
+        ];
+        const pos4 = [
+            [0, 1, 0],
+            [1, 1, 0],
+            [0, 1, 0],
         ];
 
-        super(position, new Vector(0, 0), BLOCKS);
+        const BLOCKS = [
+            Block.blockFromArray(pos1, COLOR),
+            Block.blockFromArray(pos2, COLOR),
+            Block.blockFromArray(pos3, COLOR),
+            Block.blockFromArray(pos4, COLOR),
+        ];
+
+        super(position, new Vector(1, 1), BLOCKS);
     }
 }

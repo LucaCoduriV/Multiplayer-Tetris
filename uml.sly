@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="iso-8859-15" standalone="no"?>
 <classDiagram>
   <diagramElements defaultViewEntities="ALL" defaultViewEnum="true" defaultViewMethods="TYPE_AND_NAME" defaultVisibleTypes="true" informations="" name="Tetris logic">
+    <association aggregation="NONE" direction="FIRST_TO_SECOND" id="60283" name="">
+      <role componentId="57716" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>1</min>
+          <max>1</max>
+        </multiplicity>
+      </role>
+      <role componentId="57746" name="onRotateRight" visibility="PRIVATE">
+        <multiplicity>
+          <min>1</min>
+          <max>1</max>
+        </multiplicity>
+      </role>
+    </association>
+    <association aggregation="NONE" direction="FIRST_TO_SECOND" id="60272" name="">
+      <role componentId="57716" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>1</min>
+          <max>1</max>
+        </multiplicity>
+      </role>
+      <role componentId="57746" name="onRotateLeft" visibility="PRIVATE">
+        <multiplicity>
+          <min>1</min>
+          <max>1</max>
+        </multiplicity>
+      </role>
+    </association>
     <association aggregation="NONE" direction="FIRST_TO_SECOND" id="60223" name="">
       <role componentId="59797" name="" visibility="PRIVATE">
         <multiplicity>
@@ -18,6 +46,9 @@
     <entity entityType="INTERFACE" id="60198" isAbstract="true" name="IControllerView" visibility="PUBLIC">
       <method isAbstract="true" isStatic="false" name="getInactiveBlocks" returnType="IBlock" view="DEFAULT" visibility="PUBLIC"/>
       <method isAbstract="true" isStatic="false" name="getCurrentShapeBlocks" returnType="IBlock" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="true" isStatic="false" name="start" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="true" isStatic="false" name="stop" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="true" isStatic="false" name="reset" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
     </entity>
     <inheritance id="60135">
       <child>59831</child>
@@ -242,6 +273,10 @@
     <entity entityType="CLASS" id="57329" isAbstract="false" name="Block" visibility="PUBLIC">
       <attribute const="false" defaultValue="" isStatic="false" name="positon" type="Vector2d" visibility="PRIVATE"/>
       <attribute const="false" defaultValue="" isStatic="false" name="color" type="Color" visibility="PRIVATE"/>
+      <method isAbstract="false" isStatic="true" name="blockFromArray" returnType="void" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="a" type="number[]"/>
+        <variable const="false" name="c" type="Color"/>
+      </method>
     </entity>
     <entity entityType="CLASS" id="57330" isAbstract="true" name="Shape" visibility="PUBLIC">
       <attribute const="false" defaultValue="" isStatic="false" name="rotation" type="void" visibility="PRIVATE"/>
@@ -514,8 +549,8 @@
         <h>17</h>
       </roleAssociation>
       <roleAssociation>
-        <x>157</x>
-        <y>364</y>
+        <x>98</x>
+        <y>300</y>
         <w>58</w>
         <h>17</h>
       </roleAssociation>
@@ -778,6 +813,90 @@
         </point>
       </line>
     </relationView>
+    <relationView color="-12566464" relationId="60272">
+      <line>
+        <point>
+          <x>171</x>
+          <y>196</y>
+        </point>
+        <point>
+          <x>171</x>
+          <y>381</y>
+        </point>
+      </line>
+      <labelAssociation>
+        <x>175</x>
+        <y>292</y>
+        <w>0</w>
+        <h>17</h>
+      </labelAssociation>
+      <roleAssociation>
+        <x>175</x>
+        <y>200</y>
+        <w>0</w>
+        <h>17</h>
+      </roleAssociation>
+      <roleAssociation>
+        <x>133</x>
+        <y>322</y>
+        <w>90</w>
+        <h>17</h>
+      </roleAssociation>
+      <multipliciteAssociation>
+        <x>157</x>
+        <y>200</y>
+        <w>8</w>
+        <h>17</h>
+      </multipliciteAssociation>
+      <multipliciteAssociation>
+        <x>157</x>
+        <y>331</y>
+        <w>8</w>
+        <h>17</h>
+      </multipliciteAssociation>
+    </relationView>
+    <relationView color="-12566464" relationId="60283">
+      <line>
+        <point>
+          <x>131</x>
+          <y>196</y>
+        </point>
+        <point>
+          <x>111</x>
+          <y>381</y>
+        </point>
+      </line>
+      <labelAssociation>
+        <x>125</x>
+        <y>292</y>
+        <w>0</w>
+        <h>17</h>
+      </labelAssociation>
+      <roleAssociation>
+        <x>135</x>
+        <y>200</y>
+        <w>0</w>
+        <h>17</h>
+      </roleAssociation>
+      <roleAssociation>
+        <x>73</x>
+        <y>272</y>
+        <w>98</w>
+        <h>17</h>
+      </roleAssociation>
+      <multipliciteAssociation>
+        <x>117</x>
+        <y>200</y>
+        <w>8</w>
+        <h>17</h>
+      </multipliciteAssociation>
+      <multipliciteAssociation>
+        <x>97</x>
+        <y>358</y>
+        <w>8</w>
+        <h>17</h>
+      </multipliciteAssociation>
+    </relationView>
     <componentView color="-2079" componentID="58404" displayAttributes="true" displayDefault="true" displayMethods="true">
       <geometry>
         <x>320</x>
@@ -879,7 +998,7 @@
         <x>1020</x>
         <y>120</y>
         <w>150</w>
-        <h>85</h>
+        <h>100</h>
       </geometry>
     </componentView>
     <componentView color="-2079" componentID="57328" displayAttributes="true" displayDefault="true" displayMethods="true">
@@ -1139,7 +1258,7 @@
         <x>0</x>
         <y>380</y>
         <w>190</w>
-        <h>99</h>
+        <h>144</h>
       </geometry>
     </componentView>
   </umlView>

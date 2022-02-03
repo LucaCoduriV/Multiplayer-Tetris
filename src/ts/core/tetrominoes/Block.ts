@@ -20,4 +20,17 @@ export default class Block {
     set position(position: Vector) {
         this._position = position;
     }
+
+    static blockFromArray(array: number[][], color: Color): Block[] {
+        console.log(array);
+        let result = [];
+        for (let y = 0; y < array.length; y++) {
+            for (let x = 0; x < array[0].length; x++) {
+                if (array[y][x] == 1) {
+                    result.push(new Block(new Vector(x, y), color));
+                }
+            }
+        }
+        return result;
+    }
 }

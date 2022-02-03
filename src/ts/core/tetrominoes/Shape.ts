@@ -6,17 +6,19 @@ export default abstract class Shape {
     protected _rotation: number;
     protected _position: Vector;
     protected _rotationCenter: Vector;
-    protected _blocks: Block[];
+    protected _blocks: Block[][];
     protected _board: Board;
 
-    constructor(position: Vector, rotationCenter: Vector, blocks: Block[]) {
+    constructor(position: Vector, rotationCenter: Vector, blocks: Block[][]) {
         this._blocks = blocks;
-        this._rotation = 0;
+        this._rotation = 0; // nombre entre 0 et 3
         this._position = position;
         this._rotationCenter = rotationCenter;
     }
 
     set rotation(rotation: number) {
+        if (rotation < 0) rotation = 3;
+        else if (rotation > 3) rotation = 0;
         this._rotation = rotation;
     }
 
@@ -43,10 +45,12 @@ export default abstract class Shape {
     }
 
     rotateLeft(): boolean {
+        this.rotation = this._rotation - 1;
         return true;
     }
 
     rotateRight(): boolean {
+        this.rotation = this._rotation + 1;
         return true;
     }
 
@@ -54,7 +58,7 @@ export default abstract class Shape {
      * Retourne un tableau contenant les blocks de la forme avec la position relative à la board.
      */
     get blocks(): Block[] {
-        return this._blocks.map((block) => {
+        return this._blocks[this._rotation].map((block) => {
             return new Block(
                 new Vector(block.position.getX(), block.position.getY()).add(this._position),
                 block.color

@@ -5,6 +5,8 @@ export default class ActionController {
     onRight = new EventEmitter<() => void>();
     onUp = new EventEmitter<() => void>();
     onDown = new EventEmitter<() => void>();
+    onRotateLeft = new EventEmitter<() => void>();
+    onRotateRight = new EventEmitter<() => void>();
 
     constructor() {
         document.addEventListener("keydown", this.handleKeyDown.bind(this));
@@ -28,8 +30,16 @@ export default class ActionController {
                 console.log("down");
                 this.onDown.fire();
                 break;
+            case "q":
+                console.log("rotate left");
+                this.onRotateLeft.fire();
+                break;
+            case "e":
+                console.log("rotate right");
+                this.onRotateRight.fire();
+                break;
             default:
-                console.log("other key pressed");
+                console.log("other key pressed:", event.key);
                 break;
         }
     }
