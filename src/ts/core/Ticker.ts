@@ -23,6 +23,17 @@ export default class Ticker {
             this.eventEmmitter.fire();
         }, this._interval);
     }
+
+    /**
+     * Permet de mettre à jour le ticker.
+     * @param tickPerSecond Le nombre d'évènements par seconde.
+     */
+    updateTickPerSecond(tickPerSecond: number): void {
+        this._interval = 1000 / tickPerSecond;
+        this.stop();
+        this.start();
+    }
+
     /**
      * Arrête le ticker.
      */

@@ -2,22 +2,38 @@ import Board from "./core/Board";
 import ActionController from "./ActionController";
 import IControllerView from "./view/interfaces/IControllerView";
 import IBlock from "./view/interfaces/IBlock";
-import Shape from "./core/tetrominoes/Shape";
+import Score from "./core/Score";
 import Ticker from "./core/Ticker";
+import Level from "./core/Level";
 
 export default class GameController implements IControllerView {
     private _board: Board;
     private _actionController: ActionController;
     private _ticker: Ticker;
+    private _score: Score;
+
+    private _level: Level;
 
     constructor(board: Board) {
         this._board = board;
         this._actionController = new ActionController();
         this._ticker = new Ticker(2);
+        this._score = new Score();
+        this._level = new Level();
+
+        this._level.onLevelUp.subscribe((lvl) => {
+            const ticks = [1, 2, 3, 4, 5, 6, 7];
+            console.log("LEVELED UP:", lvl);
+            this._ticker.updateTickPerSecond(ticks[lvl]);
+        });
 
         this._ticker.subscribe(() => {
             this.moveDown();
             const completedLines = this._board.checkLineCompletion();
+            if (completedLines.length > 0) {
+                this._level.addLineCompleted(completedLines.length);
+                this._score.addPoint(this._level.level, completedLines.length);
+            }
 
             if (completedLines.length > 0) {
                 completedLines.forEach((line) => {
@@ -31,6 +47,7 @@ export default class GameController implements IControllerView {
                 alert("Game Over");
                 this.reset();
                 this.start();
+                this._actionController.enable();
             }
         });
     }
@@ -113,7 +130,9 @@ export default class GameController implements IControllerView {
      * Permet de reset le jeu.
      */
     reset(): void {
+        this._score.reset();
         this._board.clear();
+        this._ticker.updateTickPerSecond(1);
     }
 
     /**
@@ -142,5 +161,9 @@ export default class GameController implements IControllerView {
                 positionY: block.position.getY(),
             };
         });
+    }
+
+    getScore(): number {
+        return this._score.score;
     }
 }
