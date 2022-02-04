@@ -4,7 +4,7 @@ import IControllerView from "./view/interfaces/IControllerView";
 import IBlock from "./view/interfaces/IBlock";
 import Score from "./core/Score";
 import Ticker from "./core/Ticker";
-import Level from "./core/Level";
+import LevelSystem from "./core/LevelSystem";
 
 export default class GameController implements IControllerView {
     private _board: Board;
@@ -12,14 +12,14 @@ export default class GameController implements IControllerView {
     private _ticker: Ticker;
     private _score: Score;
 
-    private _level: Level;
+    private _level: LevelSystem;
 
     constructor(board: Board) {
         this._board = board;
         this._actionController = new ActionController();
         this._ticker = new Ticker(2);
         this._score = new Score();
-        this._level = new Level();
+        this._level = new LevelSystem();
 
         this._level.onLevelUp.subscribe((lvl) => {
             const ticks = [1, 2, 3, 4, 5, 6, 7];

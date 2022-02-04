@@ -1,6 +1,6 @@
 import EventEmitter from "../EventEmitter";
 
-export default class Level {
+export default class LevelSystem {
     private _level = 0;
     private _nbLineCompleted = 0;
     onLevelUp: EventEmitter<(lvl: number) => void>;
